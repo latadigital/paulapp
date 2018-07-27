@@ -1,0 +1,19 @@
+page-pautas {
+
+    .content-pautas{
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        margin-bottom: 4 0px;
+        border-bottom: 1px solid #ddd;
+
+        h2{
+            color: #fff;
+            text-transform: uppercase;
+            font-family: $font-primary-semibold;
+            background: $bg-gradient;
+            padding: 5px;
+            font-size: 15px;
+        }
+    }
+}

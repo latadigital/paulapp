@@ -1,0 +1,25 @@
+<!--
+  Generated template for the SingleBlogPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{blog.title.rendered}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  
+  <img src="{{blog.acf.imagen_full_noticias.sizes.medium}}" alt="">
+  <h1 padding>{{blog.title.rendered}}</h1>
+  <p padding> {{blog.acf.bajada_noticias}} </p>
+  <p [innerHTML]="blog.content.rendered" padding></p>
+
+</ion-content>
+
+
+

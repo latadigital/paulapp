@@ -1,0 +1,58 @@
+<!--
+  Generated template for the BlogPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar color="primary">
+        <ion-buttons start >
+            <button ion-button icon-only (click)="ProfileLink()">
+                <ion-icon name="contact"></ion-icon>
+            </button>
+        </ion-buttons>
+
+        <ion-title text-center>BLOG</ion-title>
+
+        <ion-buttons end >
+            <button ion-button icon-only>
+                <ion-icon name="ios-mail"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    
+   <!-- <ion-list>
+        <button ion-item *ngFor="let blog of blogs" color="dark">
+            {{blog.id}} - {{blog.name}}
+        </button>
+    </ion-list>-->
+
+    
+    <ion-card *ngFor="let blog of blogs">
+        <div class="box-img">
+            <img src="{{blog.acf.imagen_miniatura_noticias.sizes.medium}}" alt="">
+        </div>
+        <div class="box-text">
+            <h1> {{blog.title.rendered}} </h1>
+            <p> {{blog.acf.bajada_noticias}} </p>
+            <button (click)="singleBlog(blog)">Seguir Leyendo</button>
+        </div>
+    </ion-card>
+   
+
+
+
+    <ion-fab right bottom>
+        <button ion-fab color="whatsapp"><ion-icon name="logo-whatsapp"></ion-icon></button>
+        <ion-fab-list side="left">
+          <button class="button-reserva" ion-fab> RESERVA TU HORA</button>
+        </ion-fab-list>
+    </ion-fab>
+   
+</ion-content>

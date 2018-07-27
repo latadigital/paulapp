@@ -1,0 +1,35 @@
+
+
+page-blog{
+    ion-card{
+        margin-bottom: 40px;
+        display: block;
+        .box-text{
+            padding: 10px;
+
+            h1{
+                font-family: $font-primary-bold;
+                color: $primary-color;
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+
+            p{
+                color: #666;
+            }
+            button{
+                width: 80%;
+                display: block;
+                height: 40px;
+                line-height: 40px;
+                background: $bg-gradient;
+                margin: 15px auto 0;
+                color: #fff;
+                font-family: $font-primary-bold;
+                text-transform: uppercase;
+                font-size: 15px;
+                border-radius: 20px;
+            }
+        }
+    }
+}

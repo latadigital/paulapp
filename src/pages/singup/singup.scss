@@ -1,0 +1,40 @@
+/*
+
+page-singup {
+
+    .bg-singup{
+        //background: linear-gradient(to right top, #845ec2, #0083e8, #0099ce, #00a27d, #2ea200);
+        background-image: linear-gradient(to left bottom, #845ec2, #0083e8, #0099ce, #00a27d, #2ea200);
+        width: 100%;
+        height: 100%;
+        opacity: .6;
+        position: absolute;
+        top: 0;
+
+    }
+
+    .bar-header {
+        border: 0px !important;
+        border-bottom-color: transparent !important;
+        background-image: none !important;
+        border-bottom: none !important;
+    }
+
+    ion-list{
+        padding: 70px 25px 0 25px;
+
+        .item-input, .item-ios{
+            background: transparent;
+            border-top: 0 !important; 
+            border-bottom: 0 !important; 
+
+            ion-label, .label{
+                background: transparent;
+                color: #fff;
+                font-family: 'montserratsemibold';
+            }
+        }
+    }
+}
+
+*/

@@ -1,0 +1,30 @@
+page-consulta {
+    
+}
+ion-slide{
+
+    ion-content{
+        padding-bottom: 50px;
+    }
+    .ilustracion-consulta{
+        max-height: 50%;
+        max-width: 60%;
+        margin: 18px 0;
+    }
+    h2{
+        color: $primary-color;    
+    }
+    p{
+        font-size: 14px;
+        text-align: center;
+        line-height: 18px;
+    }
+    button{
+        span{
+            text-transform: uppercase;
+            font-size: 13px;
+        }
+    }
+}
+
+

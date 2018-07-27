@@ -1,0 +1,15 @@
+page-preguntas-frecuentes {
+    ion-list{
+        div{
+            color: $primary-color;
+            font-family: $font-primary-bold;
+            text-align: left;
+            font-size: 20px;
+            border-bottom: 1px solid #f4f4f4;
+            margin-bottom: 20px;
+        }
+        p{
+            font-size: 13px;
+        }
+    }
+}

@@ -1,0 +1,64 @@
+<!--
+  Generated template for the RecetasPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+
+      <ion-buttons start >
+        <button ion-button icon-only (click)="ProfileLink()">
+          <ion-icon name="contact"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title text-center>RECETAS</ion-title>
+      <ion-buttons end >
+          <button ion-button icon-only>
+            <ion-icon name="ios-mail"></ion-icon>
+          </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+
+
+  <ion-content class="card-background-page">
+
+    <ion-card class="banner-principal">
+      <img src="assets/img/card-saopaolo.png"/>
+      <div class="card-title">INSTRUCTIVO</div>
+    </ion-card>
+
+    <ion-row padding>
+      <p class="sub-title">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
+    </ion-row>
+
+
+    <ion-row padding>
+      <h2 class="big-title">RECETAS</h2>
+    </ion-row>
+
+
+    <ion-card class="category-button" *ngFor="let item of TypeRecetas">
+      <button (click)="singleReceta()">
+          <img [src]="item.imgRecetas"/>
+          <div class="card-title">{{ item.titulo }}</div>
+      </button>
+    </ion-card>
+
+    <ion-fab right bottom>
+      <button ion-fab color="whatsapp"><ion-icon name="logo-whatsapp"></ion-icon></button>
+      <ion-fab-list side="left">
+        <button class="button-reserva" ion-fab> RESERVA TU HORA</button>
+      </ion-fab-list>
+    </ion-fab>
+  </ion-content>
+
+  <!--<div class="reserva">
+    <button> <ion-icon ios="logo-whatsapp" md="logo-whatsapp"></ion-icon> RESERVA TU HORA</button>
+  </div>-->
+  
