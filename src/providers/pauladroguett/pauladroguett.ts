@@ -8,7 +8,8 @@ export class PauladroguettProvider {
     }
 
     obtenerDatosBlogs(){
-        return this.http.get('noticias'); 
+        return this.http.get(environment.urlsite+environment.restapiwp + 'noticias'); 
+ 
     }
 
     obtenerDatosFaqs(){
@@ -53,7 +54,7 @@ export class PauladroguettProvider {
             },
             ).subscribe((res:any) => {
                 var token = res.token;
-                this.http.post('users',
+                this.http.post(environment.urlsite+environment.restapiwp+'users',
                     {
                         'username': userObj.value.username,
                         'password': userObj.value.rpassword,

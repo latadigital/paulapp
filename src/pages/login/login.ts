@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-import { PauladroguettProvider } from '../../providers/pauladroguett/pauladroguett';
+import { AuthenticationService } from '../../providers/pauladroguett/authentication.service';
 
 import { TabsPage } from '../tabs/tabs';
 
@@ -20,34 +19,49 @@ import { TabsPage } from '../tabs/tabs';
 })
 export class LoginPage {
 
-
+  error_message: string;
   username;
   password;
   user;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private proveedor: PauladroguettProvider) {
+  constructor(public navCtrl: NavController,
+               public navParams: NavParams, 
+               private authenticationService: AuthenticationService) {
   }
 
-  ionViewDidLoad() {
-    this.proveedor.obtenerUsuarios()
-    .subscribe(
-      (data)=> {this.user = data;},
-      (error)=> {console.log(error);}
-    )
+  ionViewDidLoad() {  
 
   }
 
   LinkTabsLogin(){
-    this.navCtrl.push(TabsPage);
+  
   }
 
-  /*login(){
-    console.log("Username: "+ this.username);
-    console.log("Password: "+ this.password);
-  }*/
+
 
   onLogin(){
-    console.log(this.username, this.password);
+    this.authenticationService.doLogin(this.username , this.password )
+    .subscribe(res => {
+
+      this.authenticationService.setUser({
+        token: res.json().token,
+        username: this.username,
+        displayname: res.json().user_display_name,
+        email: res.json().user_email
+      });
+      this.authenticationService.getUser().then(
+        res => this.user = res,
+        error => this.error_message = "Invalid credentials. Try with username 'aa' password 'aa'."
+      );
+      
+      this.navCtrl.push(TabsPage);
+    },
+    err => {
+
+      this.error_message = "Invalid credentials. Try with username 'aa' password 'aa'.";
+      console.log(err);
+    })
+    
   }
 
 }

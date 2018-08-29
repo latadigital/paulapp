@@ -4,6 +4,7 @@ import { PautasPage } from '../pautas/pautas';
 import { EjerciciosSelectPage } from '../ejercicios-select/ejercicios-select';
 import { PreguntasFrecuentesPage  } from '../preguntas-frecuentes/preguntas-frecuentes';
 import { TerminosCondicionesPage } from '../terminos-condiciones/terminos-condiciones';
+import { AuthenticationService } from '../../providers/pauladroguett/authentication.service';
 /**
  * Generated class for the ProfilePage page.
  *
@@ -20,11 +21,12 @@ export class ProfilePage {
 
   
   itemProfile = [];
-  
+  loggedUser: boolean = false;
+
   
 
   
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,  private authenticationService: AuthenticationService) {
 
     this.itemProfile = [
       {
@@ -73,8 +75,14 @@ export class ProfilePage {
     
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfilePage');
+  ionViewWillEnter() {
+    let user: any;
+    this.authenticationService.getUser()
+    .then(
+      res => user = res,
+      error => this.loggedUser = false
+    );
+    console.log(this.loggedUser);
   }
 
 }

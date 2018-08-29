@@ -28,7 +28,8 @@
     </ion-list>
 
     <div padding>
-        <button block class="btn-ingresar" (click)="LinkTabsLogin()">Ingresar</button>
+            <p class="error-message" *ngIf="error_message">{{error_message}}</p>
+        <button block class="btn-ingresar" (click)="onLogin()">Ingresar</button>
     </div>
 </ion-content>
 

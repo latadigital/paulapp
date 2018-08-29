@@ -2,6 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { HttpModule } from '@angular/http';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -24,15 +25,16 @@ import { TerminosCondicionesPage } from '../pages/terminos-condiciones/terminos-
 import { LoginPage } from '../pages/login/login';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { SingupPage} from '../pages/singup/singup';
-
-
+import { NativeStorage } from '@ionic-native/native-storage';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PauladroguettProvider } from '../providers/pauladroguett/pauladroguett';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthenticationService } from '../providers/pauladroguett/authentication.service';
+
+import { HttpClientModule } from '@angular/common/http';
 
 import { Camera } from '@ionic-native/camera';
-import { pauladroguett } from '../core/interceptors/pauladroguett';
+//import { pauladroguett } from '../core/interceptors/pauladroguett';
 
 @NgModule({
   declarations: [
@@ -61,6 +63,7 @@ import { pauladroguett } from '../core/interceptors/pauladroguett';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule
   ],
@@ -92,9 +95,10 @@ import { pauladroguett } from '../core/interceptors/pauladroguett';
     Camera,
     StatusBar,
     SplashScreen,
+    NativeStorage,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     PauladroguettProvider,
-    { provide: HTTP_INTERCEPTORS, useClass: pauladroguett, multi: true },
+    AuthenticationService,
   ]
 })
 export class AppModule {
