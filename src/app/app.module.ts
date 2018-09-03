@@ -30,7 +30,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PauladroguettProvider } from '../providers/pauladroguett/pauladroguett';
 import { AuthenticationService } from '../providers/pauladroguett/authentication.service';
-
+import {  Headers } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
 import { Camera } from '@ionic-native/camera';
@@ -58,14 +58,15 @@ import { Camera } from '@ionic-native/camera';
     TerminosCondicionesPage,
     LoginPage,
     WelcomePage,
-    SingupPage 
+    SingupPage,
     
   ],
   imports: [
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [

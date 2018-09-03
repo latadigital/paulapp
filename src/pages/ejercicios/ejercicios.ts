@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-
-
 import { PauladroguettProvider } from '../../providers/pauladroguett/pauladroguett';
-
-
+import { NativeStorage } from '@ionic-native/native-storage';
+import { EjerciciosSelectPage } from '../ejercicios-select/ejercicios-select';
 /**
  * Generated class for the EjerciciosPage page.
  *
@@ -21,33 +18,49 @@ import { PauladroguettProvider } from '../../providers/pauladroguett/pauladrogue
 export class EjerciciosPage {
 
   ejercicios
+
   abdomenes
   Catbrazos
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public proveedor: PauladroguettProvider) {
+  email;
+  nombre;
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    public proveedor: PauladroguettProvider,
+    private nativeStorage: NativeStorage) {
   }
 
 
   ionViewDidLoad() {
-    this.proveedor.obtenerDatosEjercicios()
+    this.nativeStorage.getItem('user').then(
+      data => {
+              this.email = data.email;
+              this.nombre = data.displayname;
+      }, 
+      error => console.error(error)
+    );
+    this.proveedor.getPostsACF('ejercicios')
     .subscribe(
-      (data)=> {this.ejercicios = data;},
-      (error)=> {console.log(error);}
-    ),
+      (data)=> {this.ejercicios = data; 
+      
+        this.ejercicios.forEach(childObj=> {
+          if(childObj.acf.usuarios.user_email == this.email){
 
-    this.proveedor.obtenerDatosCategoriasAbdomen()
-    .subscribe(
-      (data)=> {this.abdomenes = data;},
-      (error)=> {console.log(error);}
-    ),
+            console.log(childObj.acf.usuarios.user_email + this.email);
+          }
+  
+            
 
-    this.proveedor.obtenerDatosCategoriasBrazos()
-    .subscribe(
-      (data)=> {this.Catbrazos = data;},
+         })
+      
+      },
       (error)=> {console.log(error);}
     )
 
   }
-  
+  singleEjercicios(id){
+    console.log(id);
+    this.navCtrl.push(EjerciciosSelectPage , { 'id' : id });
+  }
+
 
 }

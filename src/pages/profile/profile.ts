@@ -5,6 +5,7 @@ import { EjerciciosSelectPage } from '../ejercicios-select/ejercicios-select';
 import { PreguntasFrecuentesPage  } from '../preguntas-frecuentes/preguntas-frecuentes';
 import { TerminosCondicionesPage } from '../terminos-condiciones/terminos-condiciones';
 import { AuthenticationService } from '../../providers/pauladroguett/authentication.service';
+import { NativeStorage } from '@ionic-native/native-storage';
 /**
  * Generated class for the ProfilePage page.
  *
@@ -18,15 +19,19 @@ import { AuthenticationService } from '../../providers/pauladroguett/authenticat
   templateUrl: 'profile.html',
 })
 export class ProfilePage {
-
-  
+  email;
+  nombre;
+  user;
   itemProfile = [];
   loggedUser: boolean = false;
 
   
 
   
-  constructor(public navCtrl: NavController, public navParams: NavParams,  private authenticationService: AuthenticationService) {
+  constructor(public navCtrl: NavController,
+     public navParams: NavParams, 
+     public authenticationService: AuthenticationService,
+     private nativeStorage: NativeStorage) {
 
     this.itemProfile = [
       {
@@ -56,6 +61,19 @@ export class ProfilePage {
     ]
   }
 
+
+  
+  ionViewDidLoad() {
+    this.nativeStorage.getItem('user').then(
+      data => {
+              this.email = data.email;
+              this.nombre = data.displayname;
+      }, 
+      error => console.error(error)
+    );
+
+    
+  }
   viewPautas(){
     this.navCtrl.push(PautasPage);
     
@@ -76,13 +94,5 @@ export class ProfilePage {
   }
 
   ionViewWillEnter() {
-    let user: any;
-    this.authenticationService.getUser()
-    .then(
-      res => user = res,
-      error => this.loggedUser = false
-    );
-    console.log(this.loggedUser);
   }
-
 }

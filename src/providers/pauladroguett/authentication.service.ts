@@ -1,9 +1,7 @@
-import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { NativeStorage } from '@ionic-native/native-storage';
+import { Http } from '@angular/http';
 
-import 'rxjs/add/operator/map';
-import 'rxjs/add/observable/forkJoin';
 
 
 
@@ -13,18 +11,16 @@ import { environment } from '../../environment';
 export class AuthenticationService {
 
   constructor(
-    public nativeStorage: NativeStorage,
+    private nativeStorage: NativeStorage,
     public http: Http
   ){} 
 
 
 
-  getUser(){
-    return this.nativeStorage.getItem('User');
-  }
 
   setUser(user){
-    return this.nativeStorage.setItem('User', user);
+    
+    return this.nativeStorage.setItem('user', user);
   }
 
   logOut(){

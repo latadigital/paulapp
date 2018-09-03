@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ProfilePage } from '../profile/profile';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 /**
  * Generated class for the ConsultaPage page.
@@ -16,13 +17,25 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
   templateUrl: 'consulta.html',
 })
 export class ConsultaPage {
-
+  email;
+  nombre;
   myphoto:any;
-  constructor(public navCtrl: NavController, private camera: Camera, public navParams: NavParams) {
+  loggedUser: boolean = false;
+  constructor(public navCtrl: NavController, private camera: Camera, public navParams: NavParams,
+  
+    private nativeStorage: NativeStorage) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ConsultaPage');
+    this.nativeStorage.getItem('user').then(
+      data => {
+              this.email = data.email;
+              this.nombre = data.displayname;
+      }, 
+      error => console.error(error)
+    );
+
+    
   }
 
   takePicture(){

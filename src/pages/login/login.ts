@@ -42,17 +42,12 @@ export class LoginPage {
   onLogin(){
     this.authenticationService.doLogin(this.username , this.password )
     .subscribe(res => {
-
       this.authenticationService.setUser({
         token: res.json().token,
         username: this.username,
         displayname: res.json().user_display_name,
         email: res.json().user_email
       });
-      this.authenticationService.getUser().then(
-        res => this.user = res,
-        error => this.error_message = "Invalid credentials. Try with username 'aa' password 'aa'."
-      );
       
       this.navCtrl.push(TabsPage);
     },

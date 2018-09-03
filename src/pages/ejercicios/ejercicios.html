@@ -26,39 +26,13 @@
 
 <ion-content>
 
-  <ion-card class="category-button" ng-model="">
-    <button>
-        <img src="assets/img/ejercicios/05.jpg" alt="">
-        <div class="card-title">Abdomen</div>
+  <ion-card class="category-button" *ngFor="let ej of ejercicios">
+      <div *ngIf="ej.acf.usuarios.user_email == email" >
+      <button (click)="singleEjercicios(ej.id)">
+        <img src="{{ej.acf.imagen_ejercicio.sizes.medium}}" alt="">
+        <div class="card-title">{{ej.title.rendered}}</div>
     </button>
-  </ion-card>
-
-  <ion-card class="category-button">
-    <button>
-        <img src="assets/img/ejercicios/03.jpg" alt="">
-        <div class="card-title">Brazos y Pecho</div>
-    </button>
-  </ion-card>
-
-  <ion-card class="category-button">
-    <button>
-        <img src="assets/img/ejercicios/01.jpg" alt="">
-        <div class="card-title">Cara</div>
-    </button>
-  </ion-card>
-
-  <ion-card class="category-button">
-    <button>
-        <img src="assets/img/ejercicios/02.jpg" alt="">
-        <div class="card-title">Cuerpo completo</div>
-    </button>
-  </ion-card>
-
-  <ion-card class="category-button">
-    <button>
-        <img src="assets/img/ejercicios/04.jpg" alt="">
-        <div class="card-title">Piernas y Glúteos</div>
-    </button>
+    </div>
   </ion-card>
 
 

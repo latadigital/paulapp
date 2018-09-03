@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { PauladroguettProvider } from '../../providers/pauladroguett/pauladroguett';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 /**
  * Generated class for the EjerciciosSelectPage page.
@@ -14,12 +16,35 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'ejercicios-select.html',
 })
 export class EjerciciosSelectPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  ejercicios
+  abdomenes
+  Catbrazos
+  email;
+  nombre;
+  id;
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    public proveedor: PauladroguettProvider,
+    private nativeStorage: NativeStorage) {
+      this.id = navParams.get('id'); 
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EjerciciosSelectPage');
+    
+    this.nativeStorage.getItem('user').then(
+      data => {
+              this.email = data.email;
+              this.nombre = data.displayname;
+      }, 
+      error => console.error(error)
+    );
+    this.proveedor.getPostACFid('ejercicios',  this.id)
+    .subscribe(
+      (data)=> {this.ejercicios = data; 
+      
+      },
+      (error)=> {console.log(error);}
+    )
+
   }
 
 }
