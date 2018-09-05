@@ -26,15 +26,15 @@
 
 <ion-content>
 
-  <ion-card class="category-button" *ngFor="let ej of ejercicios">
-      <div *ngIf="ej.acf.usuarios.user_email == email" >
-      <button (click)="singleEjercicios(ej.id)">
-        <img src="{{ej.acf.imagen_ejercicio.sizes.medium}}" alt="">
-        <div class="card-title">{{ej.title.rendered}}</div>
-    </button>
-    </div>
-  </ion-card>
 
+  <ion-card class="category-button" *ngFor="let cat of categorias" >
+    <div *ngIf="cat.id == 16 || cat.id == 13 || cat.id == 14 || cat.id == 17 || cat.id == 15 ">
+    <button (click)="singleEjercicios(cat.id)">
+      <img src="{{cat.acf.img_cat.sizes.medium}}" alt="">
+      <div class="card-title">{{cat.name}}</div>
+    </button>
+   </div>
+  </ion-card>
 
   <ion-fab right bottom>
     <button ion-fab color="whatsapp"><ion-icon name="logo-whatsapp"></ion-icon></button>

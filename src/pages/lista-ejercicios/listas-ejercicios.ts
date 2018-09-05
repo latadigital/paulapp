@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PauladroguettProvider } from '../../providers/pauladroguett/pauladroguett';
 import { NativeStorage } from '@ionic-native/native-storage';
-import { ListasEjerciciosPage } from '../lista-ejercicios/listas-ejercicios';
 
 /**
- * Generated class for the EjerciciosSelectPage page.
+ * Generated class for the ListasRecetasPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -13,10 +12,13 @@ import { ListasEjerciciosPage } from '../lista-ejercicios/listas-ejercicios';
 
 @IonicPage()
 @Component({
-  selector: 'page-ejercicios-select',
-  templateUrl: 'ejercicios-select.html',
+  selector: 'page-listas-recetas',
+  templateUrl: 'listas-ejercicios.html',
 })
-export class EjerciciosSelectPage {
+
+
+export class ListasEjerciciosPage {
+
   ejercicios
   email;
   nombre;
@@ -24,9 +26,10 @@ export class EjerciciosSelectPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public proveedor: PauladroguettProvider,
     private nativeStorage: NativeStorage) {
-      this.id = navParams.get('id'); 
+    this.id = navParams.get('id'); 
   }
 
+  
   ionViewDidLoad() {
     
     this.nativeStorage.getItem('user').then(
@@ -36,15 +39,11 @@ export class EjerciciosSelectPage {
       }, 
       error => console.error(error)
     );
-    this.proveedor.getPostTypeByCatId('ejercicios',  this.id)
+    this.proveedor.getPostById('ejercicios',  this.id)
     .subscribe(
       (data)=> {this.ejercicios = data;},
       (error)=> {console.log(error);}
     )
 
-  }
-  singleEjercicios(id){
-    console.log(id);
-    this.navCtrl.push(ListasEjerciciosPage, { 'id' : id });
   }
 }

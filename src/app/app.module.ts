@@ -17,6 +17,7 @@ import { RecetasPage } from '../pages/recetas/recetas';
 import { EjerciciosPage } from '../pages/ejercicios/ejercicios';
 import { SingleBlogPage } from '../pages/single-blog/single-blog';
 import { ListasRecetasPage } from '../pages/listas-recetas/listas-recetas';
+import { ListasEjerciciosPage } from '../pages/lista-ejercicios/listas-ejercicios';
 import { ProfilePage } from '../pages/profile/profile';
 import { PautasPage } from '../pages/pautas/pautas';
 import { EjerciciosSelectPage } from '../pages/ejercicios-select/ejercicios-select';
@@ -30,7 +31,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PauladroguettProvider } from '../providers/pauladroguett/pauladroguett';
 import { AuthenticationService } from '../providers/pauladroguett/authentication.service';
-import {  Headers } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
 import { Camera } from '@ionic-native/camera';
@@ -50,6 +50,7 @@ import { Camera } from '@ionic-native/camera';
     EjerciciosPage,
     SingleBlogPage ,
     ListasRecetasPage,
+    ListasEjerciciosPage,
     ConsultaPage,
     ProfilePage,
     PautasPage,
@@ -82,6 +83,7 @@ import { Camera } from '@ionic-native/camera';
     EjerciciosPage,
     SingleBlogPage,
     ListasRecetasPage,
+    ListasEjerciciosPage,
     ConsultaPage,
     ProfilePage,
     PautasPage,

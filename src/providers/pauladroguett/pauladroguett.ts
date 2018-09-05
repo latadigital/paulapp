@@ -1,7 +1,6 @@
 import { HttpClient,  HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environment';
-import { Component } from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/forkJoin';
 
@@ -19,10 +18,10 @@ export class PauladroguettProvider {
         return this.http.get('faqs'); 
     }
 
-    getPostsACF( post_type){
+    getAllPostsACF( post_type){
         return this.http.get(environment.urlsite+'/wp-json/wp/v2/'+ post_type);
     }
-    getPostACFid( post_type, id){
+    getPostById( post_type, id){
         return this.http.get(environment.urlsite+environment.restapiwp + post_type + '/' + id);
     }
    
@@ -61,25 +60,14 @@ export class PauladroguettProvider {
           + '&page=' + page)
         .map(res => res);
       }
-    obtenerDatosCategoriasAbdomen(){
-        return this.http.get('categories/16');
-    }
 
-    obtenerDatosCategoriasBrazos(){
-        return this.http.get('categories/13');
+    getCategorias(){
+        return this.http.get(environment.urlsite + environment.restapiwp+'categories');
     }
-
-    obtenerDatosCategoriasCara(){
-        return this.http.get('categories/14');
+    getPostTypeByCatId(post_type , id){
+        return this.http.get(environment.urlsite + environment.restapiwp+post_type+'/?categories='+id );
     }
-
-    obtenerDatosCategoriasCuerpo(){
-        return this.http.get('categories/17');
-    }
-
-    obtenerDatosCategoriasGluteos(){
-        return this.http.get('categories/15');
-    }
+   
 
     obtenerUsuarios(){
         return this.http.get('users/');
