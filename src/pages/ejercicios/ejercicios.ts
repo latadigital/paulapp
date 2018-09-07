@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PauladroguettProvider } from '../../providers/pauladroguett/pauladroguett';
 import { EjerciciosSelectPage } from '../ejercicios-select/ejercicios-select';
-
+import { ProfilePage } from '../profile/profile';
 /**
  * Generated class for the EjerciciosPage page.
  *
@@ -38,5 +38,7 @@ export class EjerciciosPage {
     this.navCtrl.push(EjerciciosSelectPage , { 'id' : id });
   }
 
-
+  ProfileLink(){
+    this.navCtrl.push(ProfilePage);
+  }
 }

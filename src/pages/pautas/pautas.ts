@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { PauladroguettProvider } from '../../providers/pauladroguett/pauladroguett';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 /**
  * Generated class for the PautasPage page.
@@ -15,11 +17,30 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PautasPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  pautas
+  email;
+  nombre;
+  id;
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    public proveedor: PauladroguettProvider,
+    private nativeStorage: NativeStorage) {
   }
 
+  
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PautasPage');
-  }
+    
+    this.nativeStorage.getItem('user').then(
+      data => {
+              this.email = data.email;
+              this.nombre = data.displayname;
+      }, 
+      error => console.error(error)
+    );
+    this.proveedor.getAllPosts('pautas')
+    .subscribe(
+      (data)=> {this.pautas = data;},
+      (error)=> {console.log(error);}
+    )
 
+  }
 }

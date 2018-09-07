@@ -18,7 +18,7 @@ export class PauladroguettProvider {
         return this.http.get('faqs'); 
     }
 
-    getAllPostsACF( post_type){
+    getAllPosts( post_type){
         return this.http.get(environment.urlsite+'/wp-json/wp/v2/'+ post_type);
     }
     getPostById( post_type, id){
