@@ -14,9 +14,13 @@
 
 
 <ion-content padding>
-  <div class="content-pautas"  *ngFor="let p of pautas">
-    <img src="{{p.acf.imagen.sizes.medium}}" alt="Pautas | Paula Droguett">
-    <h2>{{p?.title.rendered}}</h2>
-    <p [innerHTML]="p?.content.rendered" ></p>
+  <div   *ngFor="let pauta of pautas">
+      <div *ngIf="pauta.acf.usuarios?.user_email == email">
+   <div class="content-pautas"  *ngFor="let p of pauta.acf.pautas"> 
+     <img src="{{p.imagen.sizes.medium}}" alt="Pautas | Paula Droguett">
+     <h2>{{p?.titulo}}</h2>
+     <p [innerHTML]="p?.descripcion" ></p>
+   </div>
   </div>
+</div>
 </ion-content>

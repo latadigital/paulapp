@@ -24,7 +24,7 @@ export class PreguntasFrecuentesPage {
   }
 
   ionViewDidLoad() {
-    this.proveedor.obtenerDatosFaqs()
+    this.proveedor.getAllPosts('faqs')
     .subscribe(
       (data)=> {this.faqs = data;},
       (error)=> {console.log(error);}

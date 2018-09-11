@@ -11,13 +11,10 @@ export class PauladroguettProvider {
 
     obtenerDatosBlogs(){
         return this.http.get(environment.urlsite+environment.restapiwp + 'noticias'); 
- 
     }
-
     obtenerDatosFaqs(){
         return this.http.get('faqs'); 
     }
-
     getAllPosts( post_type){
         return this.http.get(environment.urlsite+'/wp-json/wp/v2/'+ post_type);
     }
@@ -68,7 +65,6 @@ export class PauladroguettProvider {
         return this.http.get(environment.urlsite + environment.restapiwp+post_type+'/?categories='+id );
     }
    
-
     obtenerUsuarios(){
         return this.http.get('users/');
     }
