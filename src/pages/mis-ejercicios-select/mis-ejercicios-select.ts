@@ -14,11 +14,11 @@ import { ListasEjerciciosPage } from '../lista-ejercicios/listas-ejercicios';
 
 @IonicPage()
 @Component({
-  selector: 'page-ejercicios-select',
-  templateUrl: 'ejercicios-select.html',
+  selector: 'page-mis-ejercicios-select',
+  templateUrl: 'mis-ejercicios-select.html',
 })
-export class EjerciciosSelectPage {
-  ejercicios
+export class MisEjerciciosSelectPage {
+  ejercicios;
   email;
   nombre;
   username;
@@ -28,7 +28,6 @@ export class EjerciciosSelectPage {
     public proveedor: PauladroguettProvider,
     private nativeStorage: NativeStorage,
     private toastCtrl: ToastController) {
-      this.id = navParams.get('id'); 
   }
 
   ionViewDidLoad() {
@@ -41,20 +40,20 @@ export class EjerciciosSelectPage {
       }, 
       error => console.error(error)
     );
-    this.proveedor.getPostTypeByCatId('ejercicios',  this.id)
+    this.proveedor.getPostEjercicios(this.username)
     .subscribe(
-      (data)=> {this.ejercicios = data;},
+      (data)=> {this.ejercicios = data;
+      },
       (error)=> {console.log(error);}
     )
-
   }
   singleEjercicios(id){
     console.log(id);
     this.navCtrl.push(ListasEjerciciosPage, { 'id' : id });
   }
-  saveEjercicio(id){
+  daleteEjercicio(id){
     console.log(id);
-    this.proveedor.setSaveEjercicio('test',  id)
+    this.proveedor.setSaveEjercicio('test',  this.id)
     .subscribe(
       (data)=> {
 

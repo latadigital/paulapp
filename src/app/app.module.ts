@@ -21,6 +21,7 @@ import { ListasEjerciciosPage } from '../pages/lista-ejercicios/listas-ejercicio
 import { ProfilePage } from '../pages/profile/profile';
 import { PautasPage } from '../pages/pautas/pautas';
 import { EjerciciosSelectPage } from '../pages/ejercicios-select/ejercicios-select';
+import { MisEjerciciosSelectPage } from '../pages/mis-ejercicios-select/mis-ejercicios-select';
 import { PreguntasFrecuentesPage } from '../pages/preguntas-frecuentes/preguntas-frecuentes';
 import { TerminosCondicionesPage } from '../pages/terminos-condiciones/terminos-condiciones';
 import { LoginPage } from '../pages/login/login';
@@ -55,6 +56,7 @@ import { Camera } from '@ionic-native/camera';
     ProfilePage,
     PautasPage,
     EjerciciosSelectPage,
+    MisEjerciciosSelectPage,
     PreguntasFrecuentesPage,
     TerminosCondicionesPage,
     LoginPage,
@@ -88,6 +90,7 @@ import { Camera } from '@ionic-native/camera';
     ProfilePage,
     PautasPage,
     EjerciciosSelectPage,
+    MisEjerciciosSelectPage,
     PreguntasFrecuentesPage,
     TerminosCondicionesPage ,
     LoginPage,

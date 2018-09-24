@@ -1,0 +1,35 @@
+<!--
+  Generated template for the EjerciciosSelectPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+      <ion-title>Mi selección de Ejercicios</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content>
+      <div class="content-sub_title">
+          
+          <img src="assets/img/weightlifting.svg" alt="">
+          <p>{{this.username}}Acá Puedes ver tu selección de ejercicios para hacer por los próximos 20 días durante 10 minutos</p>
+      </div>
+  
+      <ion-list>
+          <ion-item *ngFor="let ejer of ejercicios">
+              <ion-thumbnail item-start>
+                  <img src="{{ejer?.cat_img}}">
+              </ion-thumbnail>
+              <h2>{{ejer?.post_title}}</h2>
+              <p>{{ejer?.cat_name}}</p>
+              <button ion-button clear item-end (click)="singleEjercicios(ejer.ID)" >Ver</button>
+              <button ion-button clear item-end (click)="daleteEjercicio(ejer.ID)" >Eliminar</button>
+          </ion-item>   
+      </ion-list>
+  </ion-content>
+  

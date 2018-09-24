@@ -44,9 +44,10 @@ export class LoginPage {
     .subscribe(res => {
       this.authenticationService.setUser({
         token: res.json().token,
-        username: this.username,
+        username: res.json().user_nicename,
         displayname: res.json().user_display_name,
-        email: res.json().user_email
+        email: res.json().user_email,
+        user_id: res.json().user_id
       });
       
       this.navCtrl.push(TabsPage);

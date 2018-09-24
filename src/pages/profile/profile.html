@@ -16,13 +16,20 @@
 </ion-header>
 
 <ion-content>
-
+    
     <div class="content-profile">
         <div class="profile-circle">
-            <img src="assets/img/young-man-with-modern-hair-cut.svg" width="100%" style="padding: 0;"/>
+            <div *ngIf="user_data?.imagen"  >
+                <img  (click)="takePicture()" src="{{user_data?.imagen}}" width="100%" style="padding: 0;"/>
+            </div>
+            <div *ngIf="!user_data?.imagen"  >
+                <img  (click)="takePicture()" src="assets/img/young-man-with-modern-hair-cut.svg" width="100%" style="padding: 0;"/>
+            </div>
         </div>
-        <h1 text-center>{{nombre}}</h1>
-        <p text-center>30 años | 170 cm | 81 Kg</p>
+        <h1 text-center>{{nombre}} {{user_id }}</h1>
+        <div *ngIf="user_data?.anios || user_data?.cm "  >
+            <p text-center> {{user_data?.anios}} años | {{user_data?.cm}} cm | 81 {{user_data?.kg}}</p>
+        </div>
     </div>
 
 
@@ -50,7 +57,7 @@
 
     <ion-list>
         <button ion-item (click)="viewPautas()">
-            <ion-icon name="ios-restaurant" color="ico-alimentos" item-start></ion-icon>
+        <ion-icon name="ios-restaurant" color="ico-alimentos" item-start></ion-icon>
             Mi Pauta de Alimentos
         </button>
         <button ion-item (click)="viewEjercicios()">
@@ -61,6 +68,10 @@
             <ion-icon name="ios-help-circle" color="ico-preguntas" item-start></ion-icon>
             Preguntas Frecuentes
         </button>
+        <button ion-item (click)="viewEditDatos()">
+            <ion-icon name="ios-edit" color="ico-edit" item-start></ion-icon>
+                Editar Datos de usuario
+            </button>
         <button ion-item (click)="viewTerminos()">
             <ion-icon name="ios-glasses" color="ico-terminos" item-start></ion-icon>
             Términos y Condiciones

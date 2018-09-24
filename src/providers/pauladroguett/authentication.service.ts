@@ -28,7 +28,7 @@ export class AuthenticationService {
   }
 
   doLogin(username, password){
-    return this.http.post(environment.urlsite + '/wp-json/jwt-auth/v1/token',{
+    return this.http.post(environment.urlsite + '/wp-json/simple-jwt-authentication/v1/token',{
       username: username,
       password: password
     })

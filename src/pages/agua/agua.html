@@ -26,14 +26,14 @@
 
 <ion-content>
 	
-	<div class="water_progress">
+	<div class="water_progress" [ngStyle]="{'bottom': porcentaje}">
 		<img src="assets/img/agua.gif" alt="">
 	</div>
 	<div class="mask">
 		<img src="assets/img/cuerpo.svg" alt="">
 	</div>
     <ion-fab right bottom>
-        <button ion-fab color="primary"><ion-icon name="add"></ion-icon></button>
+        <button (click)="usersData(1)" ion-fab color="primary"><ion-icon name="add"></ion-icon></button>
 	</ion-fab>
 
 	<ion-fab left top>

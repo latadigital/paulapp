@@ -50,6 +50,42 @@ export class PauladroguettProvider {
         });
         });
       }
+
+
+      saveimagen(user_id,  img){
+
+        console.log( "inicio < " + img  + ">FIN");
+        console.log( "dentro del servicio");
+            return new Promise((resolve, reject) => {
+            let headers = new HttpHeaders({
+                'Content-Type': 'application/json' 
+              });
+             this.http.post(environment.urlsite + '/wp-json/user/v1/saveimagen/', {
+                user_id: user_id,
+                img: img
+            },{ headers })
+                .subscribe(data => {
+                    resolve(data);
+                }, (err) => {
+                    reject(err);
+                });
+            
+            });
+          }
+    setSaveEjercicio(username,  postid){
+        return this.http.get(
+            environment.urlsite + "/wp-json/save_user_postid/v1/products/"
+                +postid+"/"+username+
+                "?_method=GET")
+        .map(res => res);
+    }
+    getPostEjercicios(username){
+        return this.http.get( 
+            environment.urlsite + "/wp-json/all_post_by_user/v1/products/"
+                +username+
+                "?_method=GET")
+        .map(res => res);
+    }
     getComments(postId:number, page:number = 1){
         return this.http.get(
             environment.urlsite + environment.restapiwp
@@ -68,6 +104,14 @@ export class PauladroguettProvider {
     obtenerUsuarios(){
         return this.http.get('users/');
     }
+
+    getUserData(user_id){
+        return this.http.get( environment.urlsite + '/wp-json/user/v1/getuserdata/'+user_id);
+    }
+    setLitroxagua(user_id, agua, action){
+        return this.http.get( environment.urlsite + '/wp-json/litroxagua/v1/usuario/'+ user_id+'/'+ agua+'/'+action+'?_method=GET');
+    }
+
 
     crearUsuario( userObj ) {
         return new Promise((resolve, reject) => {

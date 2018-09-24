@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PautasPage } from '../pautas/pautas';
-import { EjerciciosSelectPage } from '../ejercicios-select/ejercicios-select';
+import { MisEjerciciosSelectPage } from '../mis-ejercicios-select/mis-ejercicios-select';
 import { PreguntasFrecuentesPage  } from '../preguntas-frecuentes/preguntas-frecuentes';
 import { TerminosCondicionesPage } from '../terminos-condiciones/terminos-condiciones';
 import { AuthenticationService } from '../../providers/pauladroguett/authentication.service';
 import { NativeStorage } from '@ionic-native/native-storage';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { PauladroguettProvider } from '../../providers/pauladroguett/pauladroguett';
 /**
  * Generated class for the ProfilePage page.
  *
@@ -22,14 +24,19 @@ export class ProfilePage {
   email;
   nombre;
   user;
+  user_id;
+  user_data;
   itemProfile = [];
+  myphoto:any;
   loggedUser: boolean = false;
 
   
 
   
   constructor(public navCtrl: NavController,
+    public proveedor: PauladroguettProvider,
      public navParams: NavParams, 
+     private camera: Camera,
      public authenticationService: AuthenticationService,
      private nativeStorage: NativeStorage) {
 
@@ -68,11 +75,11 @@ export class ProfilePage {
       data => {
               this.email = data.email;
               this.nombre = data.displayname;
+              this.user_id = data.user_id;
+              this.usersData();
       }, 
       error => console.error(error)
-    );
-
-    
+    );  
   }
   viewPautas(){
     this.navCtrl.push(PautasPage);
@@ -80,7 +87,7 @@ export class ProfilePage {
   }
 
   viewEjercicios(){
-    this.navCtrl.push(EjerciciosSelectPage);
+    this.navCtrl.push(MisEjerciciosSelectPage);
     
   }
 
@@ -95,4 +102,53 @@ export class ProfilePage {
 
   ionViewWillEnter() {
   }
+  takePicture(){
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      targetHeight:500,
+      targetWidth:500,
+    }
+    
+    this.camera.getPicture(options).then((imageData) => {
+     // imageData is either a base64 encoded string or a file URI
+     // If it's base64 (DATA_URL):
+     this.myphoto = 'data:image/jpeg;base64,' + imageData;
+     this.savePicture(  this.myphoto);
+
+    
+    }, (err) => {
+     // Handle error
+    });
+
+ 
+  }
+  savePicture(foto){
+
+  this.proveedor.saveimagen( this.user_id,  foto).then(
+    (data)=> {
+      console.log(this.myphoto);
+          console.log(data);
+          this.usersData();
+        },
+    (error)=> {
+      console.log(error);
+    }
+  )
+}
+
+usersData(){
+  this.proveedor.getUserData(this.user_id)
+  .subscribe(
+    (data)=> {this.user_data = data;
+
+      console.log(data);
+    },
+    (error)=> {console.log(error);}
+  )
+  
+}
+
 }
