@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { PauladroguettProvider } from '../../providers/pauladroguett/pauladroguett';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { ListasEjerciciosPage } from '../lista-ejercicios/listas-ejercicios';
+import { ConsultaPage } from '../consulta/consulta';
 
 
 /**
@@ -68,5 +69,9 @@ export class EjerciciosSelectPage {
       (error)=> {console.log(error);}
     )
 
+  }
+
+  ProfileLink(){
+    this.navCtrl.push(ConsultaPage);
   }
 }

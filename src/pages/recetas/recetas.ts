@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { ListasRecetasPage } from '../listas-recetas/listas-recetas';
+import { PauladroguettProvider } from '../../providers/pauladroguett/pauladroguett';
+import { ConsultaPage } from '../consulta/consulta';
 
 /**
  * Generated class for the RecetasPage page.
@@ -18,42 +20,28 @@ import { ListasRecetasPage } from '../listas-recetas/listas-recetas';
 export class RecetasPage {
 
 
-  TypeRecetas: Array<any> = [
+  recetas;
 
-    {
-      titulo: "Ayuna",
-      imgRecetas: "assets/img/recetas/01.jpg",
-
-    },
-    {
-      titulo: "Almuerzo",
-      imgRecetas: "assets/img/recetas/02.jpg",
-    },
-    {
-      titulo: "cena",
-      imgRecetas: "assets/img/recetas/03.jpg",
-    },
-    {
-      titulo: "Eventos Especiales",
-      imgRecetas: "assets/img/recetas/04.jpg",
-    },
-  ]
-
-
-  
-
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public proveedor: PauladroguettProvider) {
   }
-
-  singleReceta(){
-    this.navCtrl.push(ListasRecetasPage);
-  }
-
-  
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RecetasPage');
+    this.proveedor.getAllPosts('recetas')
+    .subscribe(
+      (data)=> {this.recetas = data;},
+      (error)=> {console.log(error);}
+    )
+
   }
+
+  singleReceta(recetas){
+    this.navCtrl.push(ListasRecetasPage, { recetas: recetas });
+  }
+
+  ProfileLink(){
+    this.navCtrl.push(ConsultaPage);
+  }
+
+
 
 }

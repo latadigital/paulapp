@@ -19,10 +19,11 @@ export class AuthenticationService {
 
 
   setUser(user){
-    
     return this.nativeStorage.setItem('user', user);
   }
-
+  setCuenta(cuenta){
+    return this.nativeStorage.setItem('cuenta', cuenta);
+  }
   logOut(){
     return this.nativeStorage.clear();
   }

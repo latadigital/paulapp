@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ConsultaPage } from '../consulta/consulta';
 
 /**
  * Generated class for the SingleBlogPage page.
@@ -26,4 +27,7 @@ export class SingleBlogPage {
     console.log('ionViewDidLoad SingleBlogPage');
   }
 
+  ProfileLink(){
+    this.navCtrl.push(ConsultaPage);
+  }
 }

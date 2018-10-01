@@ -14,7 +14,7 @@
           <ion-icon name="contact"></ion-icon>
         </button>
       </ion-buttons>
-      <ion-title text-center>CONSULTAS </ion-title>
+      <ion-title text-center>Datos Personales </ion-title>
       <ion-buttons end >
           <button ion-button icon-only>
             <ion-icon name="ios-mail"></ion-icon>
@@ -24,46 +24,37 @@
 
 </ion-header>
 
-
 <ion-content padding>
-    <ion-slides pager>
-
-        <ion-slide>
-            <img src="assets/img/paso1.svg" class="ilustracion-consulta"/>
-            <h2>Paso 1</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est fugit esse aspernatur nulla, alias quisquam. Nemo inventore doloribus minus ducimus.</p>
-        </ion-slide>
-      
-        <ion-slide>
-            <img src="assets/img/paso2.svg" class="ilustracion-consulta"/>
-            <h2>Paso 2</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, maxime vitae. Mollitia ipsa maxime consequatur voluptate nemo,</p>
-        </ion-slide>
-      
-        <ion-slide>
-            <img src="assets/img/paso3.svg" class="ilustracion-consulta"/>
-            <h2>Paso 3</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit accusamus soluta, assumenda iste saepe sed veniam dolore deleniti </p>
-        </ion-slide>
-        <ion-slide>
-            <img src="assets/img/paso4.svg" class="ilustracion-consulta"/>
-            <h2>Paso 4</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, voluptatibus</p>
-            <button ion-button  round (click)="takePicture();">Tomar Foto</button>
-
-
-           <!-- <img [src]="{{ myphoto }}">-->
-        </ion-slide>
-      
-      </ion-slides>
-
-      <div class="custom-swiper-pagination swiper-pagination"></div>
-</ion-content>
-<!--<ion-footer class="reserva-footer">
-    <ion-toolbar>
-        <button ion-button block color="secondary" (click)="launch('url')">RESERVA TU HORA</button>
-    </ion-toolbar>
-</ion-footer>-->
+        <form autocomplete="off" [formGroup]="user" (ngSubmit)="save()">
+              
+            <ion-list>
+                <ion-item>
+                    <ion-label floating>Peso</ion-label>
+                    <ion-input type="text"  formControlName="peso" [value]="user_data?.peso"  value=""></ion-input>
+                </ion-item>
+                
+                <ion-item>
+                    <ion-label floating>Altura </ion-label>
+                    <ion-input type="text" formControlName="altura" [value]="user_data?.altura" ></ion-input>
+                </ion-item> 
+    
+                <ion-item>
+                    <ion-label floating>Edad</ion-label>
+                    <ion-input type="number" maxlength="2" formControlName="edad"  [value]="user_data?.edad"  value=""></ion-input>
+                </ion-item>
+    
+                <ion-item>
+                    <ion-label floating>Descripcion</ion-label>
+                    <ion-textarea  rows="5" maxLength="500" formControlName="descripcion" [value]="user_data?.descripcion"  value=""></ion-textarea>
+                </ion-item>
+                
+            </ion-list>
+               
+            <div padding>
+                <button block class="btn-ingresar" >Guardar datos</button>
+            </div>
+        </form>
+    </ion-content>
 
 
 

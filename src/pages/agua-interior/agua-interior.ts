@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NativeStorage } from '@ionic-native/native-storage';
 import { PauladroguettProvider } from '../../providers/pauladroguett/pauladroguett';
-import { AguaInteriorPage } from '../agua-interior/agua-interior';
+import { AguaPage } from '../agua/agua';
 import { ConsultaPage } from '../consulta/consulta';
 
 /**
@@ -14,53 +14,49 @@ import { ConsultaPage } from '../consulta/consulta';
 
 @IonicPage()
 @Component({
-  selector: 'page-agua',
-  templateUrl: 'agua.html',
+  selector: 'page-agua-interior',
+  templateUrl: 'agua-interior.html',
 })
-export class AguaPage {
+export class AguaInteriorPage {
   email;
   nombre;
   user;
   user_id;
   porcentaje;
-  myStyles;
+  litrosUsuarios;
+  aguaconsumida;
 
   constructor(public navCtrl: NavController,
     public proveedor: PauladroguettProvider,
      public navParams: NavParams, 
      private nativeStorage: NativeStorage) {
-
-     this.porcentaje = navParams.get('porcentaje'); 
   }
 
   ionViewDidLoad() {
-       this.porcentaje = this.navParams.get('porcentaje'); 
+    
     this.nativeStorage.getItem('user').then(
       data => {
               this.email = data.email;
               this.nombre = data.displayname;
               this.user_id = data.user_id;
-              this.usersData(2);
+              this.aguaUser(2);
       }, 
       error => console.error(error)
     );  
   }
 
-  usersData(action){
-    //action 2 solo consulta
-    this.proveedor.setLitroxagua(this.user_id, 0, 0, action)
+  aguaUser(action){
+    this.proveedor.setLitroxagua(this.user_id, this.aguaconsumida, this.litrosUsuarios,action)
     .subscribe(
-      (data)=> {this.porcentaje = data;
+      (data)=> {  this.porcentaje = data;
   
      
+          this.navCtrl.push(AguaPage, { 'porcentaje' : this.porcentaje });
+        
       },
       (error)=> {console.log(error);}
     )
     
-  }
-
-  viewAguaInterior(){
-    this.navCtrl.push(AguaInteriorPage);
   }
   ProfileLink(){
     this.navCtrl.push(ConsultaPage);

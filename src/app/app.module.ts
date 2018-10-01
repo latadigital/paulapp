@@ -12,6 +12,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { ConsultaPage } from '../pages/consulta/consulta';
 import { AguaPage } from '../pages/agua/agua';
+import { AguaInteriorPage } from '../pages/agua-interior/agua-interior';
+
 import { BlogPage } from '../pages/blog/blog';
 import { RecetasPage } from '../pages/recetas/recetas';
 import { EjerciciosPage } from '../pages/ejercicios/ejercicios';
@@ -46,6 +48,7 @@ import { Camera } from '@ionic-native/camera';
     TabsPage,
     ConsultaPage,
     AguaPage,
+    AguaInteriorPage,
     BlogPage,
     RecetasPage,
     EjerciciosPage,
@@ -80,6 +83,7 @@ import { Camera } from '@ionic-native/camera';
     TabsPage,
     ConsultaPage,
     AguaPage,
+    AguaInteriorPage,
     BlogPage,
     RecetasPage,
     EjerciciosPage,

@@ -43,10 +43,10 @@
     </ion-row>
 
 
-    <ion-card class="category-button" *ngFor="let item of TypeRecetas">
-      <button (click)="singleReceta()">
-          <img [src]="item.imgRecetas"/>
-          <div class="card-title">{{ item.titulo }}</div>
+    <ion-card class="category-button" *ngFor="let item of recetas">
+      <button (click)="singleReceta(item)">
+          <img [src]="item.acf.imagen.sizes.medium"/>
+          <div class="card-title">{{ item.title.rendered }}</div>
       </button>
     </ion-card>
 

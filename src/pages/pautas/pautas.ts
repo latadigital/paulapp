@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PauladroguettProvider } from '../../providers/pauladroguett/pauladroguett';
 import { NativeStorage } from '@ionic-native/native-storage';
+import { ConsultaPage } from '../consulta/consulta';
 
 /**
  * Generated class for the PautasPage page.
@@ -42,5 +43,8 @@ export class PautasPage {
       (error)=> {console.log(error);}
     )
 
+  }
+  ProfileLink(){
+    this.navCtrl.push(ConsultaPage);
   }
 }

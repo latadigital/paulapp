@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 
 import { PauladroguettProvider } from '../../providers/pauladroguett/pauladroguett';
+import { ConsultaPage } from '../consulta/consulta';
 
 /**
  * Generated class for the PreguntasFrecuentesPage page.
@@ -30,5 +31,7 @@ export class PreguntasFrecuentesPage {
       (error)=> {console.log(error);}
     )
   }
-
+  ProfileLink(){
+    this.navCtrl.push(ConsultaPage);
+  }
 }

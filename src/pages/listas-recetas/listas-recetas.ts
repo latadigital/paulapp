@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ConsultaPage } from '../consulta/consulta';
 
 /**
  * Generated class for the ListasRecetasPage page.
@@ -17,41 +18,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 export class ListasRecetasPage {
 
-  ListaRecetas: Array<any> = [
-    {
-      titulo: "Pollo con Arroz",
-    },
-    {
-      titulo: "Pollo con Arroz",
-    },
-    {
-      titulo: "Pollo con Arroz",
-    },
-    {
-      titulo: "Pollo con Arroz",
-    },
-    {
-      titulo: "Pollo con Arroz",
-    },
-    {
-      titulo: "Pollo con Arroz",
-    },
-    {
-      titulo: "Pollo con Arroz",
-    },
-    {
-      titulo: "Pollo con Arroz",
-    },
-    {
-      titulo: "Pollo con Arroz",
-    }
-  ]
-
+  recetas;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.recetas = navParams.data.recetas;
+    console.log(this.recetas);
   }
 
-  
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ListasRecetasPage');
+    console.log('ionViewDidLoad recetas');
+  }
+
+  ProfileLink(){
+    this.navCtrl.push(ConsultaPage);
   }
 }

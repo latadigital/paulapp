@@ -17,10 +17,19 @@
       <div class="content-sub_title">
           
           <img src="assets/img/weightlifting.svg" alt="">
-          <p>{{this.username}}Acá Puedes ver tu selección de ejercicios para hacer por los próximos 20 días durante 10 minutos</p>
+          <p>{{tipocuenta}}Acá Puedes ver tu selección de ejercicios para hacer por los próximos 20 días durante 10 minutos</p>
       </div>
-  
-      <ion-list>
+      <ion-list *ngIf="tipocuenta == 1">
+        <ion-item *ngFor="let ejer of user_data?.ejercicios">
+            <ion-thumbnail item-start>
+                <img src="{{ejer?.cat_img}}">
+            </ion-thumbnail>
+            <h2>{{ejer?.post_title}}</h2>
+            <p>{{ejer?.cat_name}}</p>
+            <button ion-button clear item-end (click)="singleEjercicios(ejer.ID)" >Ver</button>
+        </ion-item>   
+    </ion-list>
+      <ion-list *ngIf="tipocuenta != 1">
           <ion-item *ngFor="let ejer of ejercicios">
               <ion-thumbnail item-start>
                   <img src="{{ejer?.cat_img}}">

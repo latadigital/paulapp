@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ConsultaPage } from '../consulta/consulta';
 
 /**
  * Generated class for the TerminosCondicionesPage page.
@@ -22,4 +23,7 @@ export class TerminosCondicionesPage {
     console.log('ionViewDidLoad TerminosCondicionesPage');
   }
 
+  ProfileLink(){
+    this.navCtrl.push(ConsultaPage);
+  }
 }

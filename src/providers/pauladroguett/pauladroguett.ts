@@ -54,8 +54,6 @@ export class PauladroguettProvider {
 
       saveimagen(user_id,  img){
 
-        console.log( "inicio < " + img  + ">FIN");
-        console.log( "dentro del servicio");
             return new Promise((resolve, reject) => {
             let headers = new HttpHeaders({
                 'Content-Type': 'application/json' 
@@ -63,6 +61,27 @@ export class PauladroguettProvider {
              this.http.post(environment.urlsite + '/wp-json/user/v1/saveimagen/', {
                 user_id: user_id,
                 img: img
+            },{ headers })
+                .subscribe(data => {
+                    resolve(data);
+                }, (err) => {
+                    reject(err);
+                });
+            
+            });
+          }
+          saveDataUser(userObj , user_id){
+
+            return new Promise((resolve, reject) => {
+            let headers = new HttpHeaders({
+                'Content-Type': 'application/json' 
+              });
+             this.http.post(environment.urlsite + '/wp-json/user/v1/saveimagen/', {
+                'user_id': user_id,
+                'peso': userObj.value.peso,
+                'altura': userObj.value.altura,
+                'edad': userObj.value.edad,
+                'descripcion': userObj.value.descripcion
             },{ headers })
                 .subscribe(data => {
                     resolve(data);
@@ -108,8 +127,8 @@ export class PauladroguettProvider {
     getUserData(user_id){
         return this.http.get( environment.urlsite + '/wp-json/user/v1/getuserdata/'+user_id);
     }
-    setLitroxagua(user_id, agua, action){
-        return this.http.get( environment.urlsite + '/wp-json/litroxagua/v1/usuario/'+ user_id+'/'+ agua+'/'+action+'?_method=GET');
+    setLitroxagua(user_id, agua,litrosUsuarios,  action){
+        return this.http.get( environment.urlsite + '/wp-json/litroxagua/v1/usuario/'+user_id+'/'+ agua+'/'+litrosUsuarios +'/'+action+'?_method=GET');
     }
 
 

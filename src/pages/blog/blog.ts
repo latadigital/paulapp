@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SingleBlogPage } from '../single-blog/single-blog';
 
 import { PauladroguettProvider } from '../../providers/pauladroguett/pauladroguett';
+import { ConsultaPage } from '../consulta/consulta';
 /**
  * Generated class for the BlogPage page.
  *
@@ -37,5 +38,7 @@ export class BlogPage {
     this.navCtrl.push(SingleBlogPage, { blog: blog });
   }
 
-
+  ProfileLink(){
+    this.navCtrl.push(ConsultaPage);
+  }
 }

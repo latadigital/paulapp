@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 import { NavController, LoadingController, NavParams } from 'ionic-angular';
-import { ConsultaPage } from '../consulta/consulta';
 import { AguaPage } from '../agua/agua';
 import { BlogPage } from '../blog/blog';
 import { RecetasPage } from '../recetas/recetas';
 import { EjerciciosPage } from '../ejercicios/ejercicios';
+import { ProfilePage } from '../profile/profile';
 
 
 @Component({
@@ -13,7 +13,7 @@ import { EjerciciosPage } from '../ejercicios/ejercicios';
 })
 export class TabsPage {
 
-  tab1Root = ConsultaPage;
+  tab1Root = ProfilePage;
   tab2Root = AguaPage;
   tab3Root = BlogPage;
   tab4Root = RecetasPage;

@@ -8,6 +8,7 @@ import { AuthenticationService } from '../../providers/pauladroguett/authenticat
 import { NativeStorage } from '@ionic-native/native-storage';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { PauladroguettProvider } from '../../providers/pauladroguett/pauladroguett';
+import { ConsultaPage } from '../consulta/consulta';
 /**
  * Generated class for the ProfilePage page.
  *
@@ -28,14 +29,10 @@ export class ProfilePage {
   user_data;
   itemProfile = [];
   myphoto:any;
-  loggedUser: boolean = false;
 
   
-
-  
-  constructor(public navCtrl: NavController,
-    public proveedor: PauladroguettProvider,
-     public navParams: NavParams, 
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+     public proveedor: PauladroguettProvider,
      private camera: Camera,
      public authenticationService: AuthenticationService,
      private nativeStorage: NativeStorage) {
@@ -100,8 +97,6 @@ export class ProfilePage {
     
   }
 
-  ionViewWillEnter() {
-  }
   takePicture(){
     const options: CameraOptions = {
       quality: 100,
@@ -126,29 +121,35 @@ export class ProfilePage {
  
   }
   savePicture(foto){
+    this.proveedor.saveimagen( this.user_id,  foto).then(
+      (data)=> {
 
-  this.proveedor.saveimagen( this.user_id,  foto).then(
-    (data)=> {
-      console.log(this.myphoto);
-          console.log(data);
-          this.usersData();
-        },
-    (error)=> {
-      console.log(error);
-    }
-  )
-}
+            this.usersData();
+          },
+      (error)=> {
+        console.log(error);
+        }
+      )
+  }
 
-usersData(){
-  this.proveedor.getUserData(this.user_id)
-  .subscribe(
-    (data)=> {this.user_data = data;
+  usersData(){
+    this.proveedor.getUserData(this.user_id)
+    .subscribe(
+      (data)=> {this.user_data = data;
 
-      console.log(data);
-    },
-    (error)=> {console.log(error);}
-  )
+        this.authenticationService.setCuenta({ 
+          tipocuenta: this.user_data.tipocuenta
+        });
+
+      },
+      (error)=> {console.log(error);}
+    )
+    
+  }
+  ProfileLink(){
+    this.navCtrl.push(ConsultaPage);
+  }
+
   
-}
 
 }
