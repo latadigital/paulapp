@@ -35,6 +35,7 @@ export class ConsultaPage {
 
           ) {
       this.user = this.formBuilder.group({
+          sexo: ['', Validators.required],
           peso: ['', Validators.required],
           altura: ['', Validators.required],
           edad: ['', Validators.required],

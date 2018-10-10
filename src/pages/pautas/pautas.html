@@ -9,11 +9,11 @@
   <ion-navbar>
     <ion-title>Pautas | Paula Droguett</ion-title>
   </ion-navbar>
-
+ 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding id="printMe" >
   <div   *ngFor="let pauta of pautas">
       <div *ngIf="pauta.acf.usuarios?.user_email == email">
    <div class="content-pautas"  *ngFor="let p of pauta.acf.pautas"> 

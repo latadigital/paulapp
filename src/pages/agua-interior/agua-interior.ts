@@ -39,7 +39,7 @@ export class AguaInteriorPage {
               this.email = data.email;
               this.nombre = data.displayname;
               this.user_id = data.user_id;
-              this.aguaUser(2);
+              this.litrosusuarios();
       }, 
       error => console.error(error)
     );  
@@ -52,6 +52,20 @@ export class AguaInteriorPage {
   
      
           this.navCtrl.push(AguaPage, { 'porcentaje' : this.porcentaje });
+        
+      },
+      (error)=> {console.log(error);}
+    )
+    
+  }
+
+  litrosusuarios(){
+    this.proveedor.setLitroxagua(this.user_id, 0, 0,3)
+    .subscribe(
+      (data)=> {  this.litrosUsuarios = data;
+  
+     
+
         
       },
       (error)=> {console.log(error);}

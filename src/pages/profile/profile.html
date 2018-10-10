@@ -59,9 +59,6 @@
                 </div>
         </div>
     </div>
-
-
-
    <!--
     Lista Creada Dinámica profile.ts   
     
@@ -75,6 +72,12 @@
     -->
 
     <ion-list>
+
+           
+    <button ion-item (click)="viewAgua()">
+            <ion-icon name="ios-water-outline" color="ico-water-outline" item-start></ion-icon>
+                Cantidad de agua consumida: {{porcentaje?.circulo}}%
+            </button>
         <button ion-item (click)="viewPautas()">
         <ion-icon name="ios-restaurant" color="ico-alimentos" item-start></ion-icon>
             Mi Pauta de Alimentos

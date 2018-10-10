@@ -78,6 +78,7 @@ export class PauladroguettProvider {
               });
              this.http.post(environment.urlsite + '/wp-json/user/v1/saveimagen/', {
                 'user_id': user_id,
+                'sexo': userObj.value.sexo,
                 'peso': userObj.value.peso,
                 'altura': userObj.value.altura,
                 'edad': userObj.value.edad,

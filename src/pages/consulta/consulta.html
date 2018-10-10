@@ -29,6 +29,14 @@
               
             <ion-list>
                 <ion-item>
+                    <ion-label color="primary"><span class="obligatorio">*</span>Género</ion-label>
+                    <ion-select   placeholder="Seleccione" formControlName="sexo" value="" >
+                        <ion-option value="Masculino" selected>Masculino</ion-option>
+                        <ion-option value="Femenino">Femenino</ion-option>
+                    </ion-select>
+                </ion-item>
+                        
+                <ion-item>
                     <ion-label floating>Peso</ion-label>
                     <ion-input type="text"  formControlName="peso" [value]="user_data?.peso"  value=""></ion-input>
                 </ion-item>
@@ -42,11 +50,12 @@
                     <ion-label floating>Edad</ion-label>
                     <ion-input type="number" maxlength="2" formControlName="edad"  [value]="user_data?.edad"  value=""></ion-input>
                 </ion-item>
-    
                 <ion-item>
                     <ion-label floating>Descripcion</ion-label>
                     <ion-textarea  rows="5" maxLength="500" formControlName="descripcion" [value]="user_data?.descripcion"  value=""></ion-textarea>
                 </ion-item>
+                
+              
                 
             </ion-list>
                

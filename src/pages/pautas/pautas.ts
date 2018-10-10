@@ -4,6 +4,7 @@ import { PauladroguettProvider } from '../../providers/pauladroguett/pauladrogue
 import { NativeStorage } from '@ionic-native/native-storage';
 import { ConsultaPage } from '../consulta/consulta';
 
+
 /**
  * Generated class for the PautasPage page.
  *
@@ -24,7 +25,8 @@ export class PautasPage {
   id;
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public proveedor: PauladroguettProvider,
-    private nativeStorage: NativeStorage) {
+    private nativeStorage: NativeStorage
+  ) {
   }
 
   
@@ -47,4 +49,5 @@ export class PautasPage {
   ProfileLink(){
     this.navCtrl.push(ConsultaPage);
   }
+
 }

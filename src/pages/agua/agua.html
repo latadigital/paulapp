@@ -26,7 +26,7 @@
 
 <ion-content>
 	
-	<div class="water_progress" [ngStyle]="{'bottom': porcentaje}">
+	<div class="water_progress" [ngStyle]="{'bottom': porcentaje?.css}">
 		<img src="assets/img/agua.gif" alt="">
 	</div>
 	<div class="mask">
@@ -37,7 +37,7 @@
 	</ion-fab>
 
 	<ion-fab left top>
-		<button ion-fab color="primary">100%</button>
+		<button ion-fab color="primary">{{porcentaje?.circulo}}%</button>
 	</ion-fab>
 	
 </ion-content>

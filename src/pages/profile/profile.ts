@@ -9,6 +9,7 @@ import { NativeStorage } from '@ionic-native/native-storage';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { PauladroguettProvider } from '../../providers/pauladroguett/pauladroguett';
 import { ConsultaPage } from '../consulta/consulta';
+import { AguaPage } from '../agua/agua';
 /**
  * Generated class for the ProfilePage page.
  *
@@ -29,6 +30,7 @@ export class ProfilePage {
   user_data;
   itemProfile = [];
   myphoto:any;
+  porcentaje;
 
   
   constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -36,7 +38,7 @@ export class ProfilePage {
      private camera: Camera,
      public authenticationService: AuthenticationService,
      private nativeStorage: NativeStorage) {
-
+      
     this.itemProfile = [
       {
         'title': 'Mi pauta de Alimentos',
@@ -74,9 +76,14 @@ export class ProfilePage {
               this.nombre = data.displayname;
               this.user_id = data.user_id;
               this.usersData();
+              this.usersAgua();
       }, 
       error => console.error(error)
     );  
+  }
+  viewAgua(){
+    this.navCtrl.push(AguaPage);
+    
   }
   viewPautas(){
     this.navCtrl.push(PautasPage);
@@ -141,6 +148,18 @@ export class ProfilePage {
           tipocuenta: this.user_data.tipocuenta
         });
 
+      },
+      (error)=> {console.log(error);}
+    )
+    
+  }
+  usersAgua(){
+    //action 2 solo consulta
+    this.proveedor.setLitroxagua(this.user_id, 0, 0, 2)
+    .subscribe(
+      (data)=> {this.porcentaje = data;
+  
+     
       },
       (error)=> {console.log(error);}
     )
