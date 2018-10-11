@@ -20,18 +20,39 @@ import { ConsultaPage } from '../consulta/consulta';
 export class PreguntasFrecuentesPage {
 
 
-  faqs
+  faqs;
+  faqs2;
   constructor(public navCtrl: NavController, public navParams: NavParams, public proveedor: PauladroguettProvider) {
   }
 
   ionViewDidLoad() {
-    this.proveedor.getAllPosts('faqs')
-    .subscribe(
-      (data)=> {this.faqs = data;},
-      (error)=> {console.log(error);}
-    )
+    this.getFaqs();
   }
   ProfileLink(){
     this.navCtrl.push(ConsultaPage);
+  }
+
+  getItems(ev: any) {
+    
+  this.faqs =  this.faqs2 ;
+    
+    // set val to the value of the searchbar
+    const val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.faqs = this.faqs.filter((item) => {
+        return (item.title.rendered.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+  }
+  getFaqs(){
+    this.proveedor.getAllPosts('faqs')
+    .subscribe(
+      (data)=> {this.faqs = data;
+              this.faqs2 = data;
+      },
+      (error)=> {console.log(error);}
+    )
   }
 }

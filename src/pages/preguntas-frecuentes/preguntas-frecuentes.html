@@ -14,14 +14,13 @@
 
 
 <ion-content padding>
-    <!--<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>-->
+    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
 
     <ion-list>
-        <div *ngFor="let faq of faqs">
+        <ion-item  *ngFor="let faq of faqs">
             {{faq.title.rendered}}
-            <p>
-                {{faq.acf.respuesta_faqs}} 
+            <p> {{faq.acf.respuesta_faqs}} 
             </p>
-        </div>
+        </ion-item>
     </ion-list>
 </ion-content>
