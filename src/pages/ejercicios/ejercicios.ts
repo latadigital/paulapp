@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PauladroguettProvider } from '../../providers/pauladroguett/pauladroguett';
 import { EjerciciosSelectPage } from '../ejercicios-select/ejercicios-select';
 import { ConsultaPage } from '../consulta/consulta';
+import { NativeStorage } from '@ionic-native/native-storage';
 /**
  * Generated class for the EjerciciosPage page.
  *
@@ -18,9 +19,12 @@ import { ConsultaPage } from '../consulta/consulta';
 export class EjerciciosPage {
 
   categorias;
-  
+  email;
+  user_id;
+  tipocuenta;
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-    public proveedor: PauladroguettProvider) {
+    public proveedor: PauladroguettProvider, 
+    private nativeStorage: NativeStorage) {
   }
 
 
@@ -31,6 +35,13 @@ export class EjerciciosPage {
       (error)=> {console.log(error);}
     )
 
+
+    this.nativeStorage.getItem('cuenta').then(
+      data => {
+              this.tipocuenta = data.tipocuenta;
+      }, 
+      error => console.error(error)
+    );
   }
   
   singleEjercicios(id){

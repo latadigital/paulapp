@@ -35,6 +35,7 @@ export class AguaPage {
 
   ionViewDidLoad() {
        this.porcentaje = this.navParams.get('porcentaje'); 
+       this.usersData(2);
     this.nativeStorage.getItem('user').then(
       data => {
               this.email = data.email;
@@ -48,7 +49,7 @@ export class AguaPage {
 
   usersData(action){
     //action 2 solo consulta
-    this.proveedor.setLitroxagua(this.user_id, 0, 0, action)
+    this.proveedor.setLitroxagua(9, 0, 0, action)
     .subscribe(
       (data)=> {this.porcentaje = data;
   

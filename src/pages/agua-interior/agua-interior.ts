@@ -25,6 +25,7 @@ export class AguaInteriorPage {
   porcentaje;
   litrosUsuarios;
   aguaconsumida;
+  tipocuenta;
 
   constructor(public navCtrl: NavController,
     public proveedor: PauladroguettProvider,
@@ -33,16 +34,29 @@ export class AguaInteriorPage {
   }
 
   ionViewDidLoad() {
-    
-    this.nativeStorage.getItem('user').then(
+    this.user_id = 9;
+    this.litrosusuarios(3);
+    /*this.nativeStorage.getItem('user').then(
       data => {
               this.email = data.email;
               this.nombre = data.displayname;
               this.user_id = data.user_id;
-              this.litrosusuarios();
+              
       }, 
       error => console.error(error)
-    );  
+    );*/
+    this.nativeStorage.getItem('cuenta').then(
+      data => {
+              this.tipocuenta = data.tipocuenta;
+              console.log(this.tipocuenta );
+              if(this.tipocuenta == "pagado"){
+                this.litrosusuarios(4);
+              }else{
+                this.litrosusuarios(3);
+              }
+      }, 
+      error => console.error(error)
+    );
   }
 
   aguaUser(action){
@@ -59,8 +73,8 @@ export class AguaInteriorPage {
     
   }
 
-  litrosusuarios(){
-    this.proveedor.setLitroxagua(this.user_id, 0, 0,3)
+  litrosusuarios(accion){
+    this.proveedor.setLitroxagua(this.user_id, 0, 0,accion)
     .subscribe(
       (data)=> {  this.litrosUsuarios = data;
   
