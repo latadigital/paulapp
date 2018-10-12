@@ -10,6 +10,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 import { PauladroguettProvider } from '../../providers/pauladroguett/pauladroguett';
 import { ConsultaPage } from '../consulta/consulta';
 import { AguaPage } from '../agua/agua';
+import { ContactPage } from '../contact/contact';
 /**
  * Generated class for the ProfilePage page.
  *
@@ -80,6 +81,10 @@ export class ProfilePage {
       }, 
       error => console.error(error)
     );  
+  }
+
+  viewContact(){
+    this.navCtrl.push(ContactPage);
   }
   viewAgua(){
     this.navCtrl.push(AguaPage);

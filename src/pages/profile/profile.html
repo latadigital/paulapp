@@ -73,11 +73,14 @@
 
     <ion-list>
 
-           
+    <button ion-item (click)="viewContact()">
+        <ion-icon name="ios-mail" color="ico-ios-mail" item-start></ion-icon>
+        Consulta en linea
+    </button>          
     <button ion-item (click)="viewAgua()">
-            <ion-icon name="ios-water-outline" color="ico-water-outline" item-start></ion-icon>
-                Cantidad de agua consumida: {{porcentaje?.circulo}}%
-            </button>
+        <ion-icon name="ios-water-outline" color="ico-water-outline" item-start></ion-icon>
+        Cantidad de agua consumida: {{porcentaje?.circulo}}%
+    </button>
         <button ion-item (click)="viewPautas()">
         <ion-icon name="ios-restaurant" color="ico-alimentos" item-start></ion-icon>
             Mi Pauta de Alimentos
@@ -97,5 +100,10 @@
     </ion-list>
    
 
-
+    <ion-fab right bottom>
+        <button ion-fab color="whatsapp"><ion-icon name="logo-whatsapp"></ion-icon></button>
+        <ion-fab-list side="left">
+          <a class="button-reserva"  href="https://api.whatsapp.com/send?phone=569" target="_blank"  ion-fab> Ir a whatsapp</a>
+        </ion-fab-list>
+      </ion-fab>
 </ion-content>

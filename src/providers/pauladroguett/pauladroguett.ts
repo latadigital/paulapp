@@ -70,7 +70,7 @@ export class PauladroguettProvider {
             
             });
           }
-          saveDataUser(userObj , user_id){
+          saveDataUser(userObj , user_id, accion){
 
             return new Promise((resolve, reject) => {
             let headers = new HttpHeaders({
@@ -79,10 +79,12 @@ export class PauladroguettProvider {
              this.http.post(environment.urlsite + '/wp-json/user/v1/saveimagen/', {
                 'user_id': user_id,
                 'sexo': userObj.value.sexo,
+                'diagnostico': userObj.value.diagnostico,
                 'peso': userObj.value.peso,
                 'altura': userObj.value.altura,
                 'edad': userObj.value.edad,
-                'descripcion': userObj.value.descripcion
+                'descripcion': userObj.value.descripcion,
+                'accioin' : accion
             },{ headers })
                 .subscribe(data => {
                     resolve(data);

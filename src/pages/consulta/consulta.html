@@ -9,11 +9,6 @@
 
   <ion-navbar color="primary">
 
-      <ion-buttons start >
-        <button ion-button icon-only (click)="ProfileLink()">
-          <ion-icon name="contact"></ion-icon>
-        </button>
-      </ion-buttons>
       <ion-title text-center>Datos Personales </ion-title>
       <ion-buttons end >
           <button ion-button icon-only>
@@ -50,12 +45,8 @@
                     <ion-label floating>Edad</ion-label>
                     <ion-input type="number" maxlength="2" formControlName="edad"  [value]="user_data?.edad"  value=""></ion-input>
                 </ion-item>
-                <ion-item>
-                    <ion-label floating>Descripcion</ion-label>
-                    <ion-textarea  rows="5" maxLength="500" formControlName="descripcion" [value]="user_data?.descripcion"  value=""></ion-textarea>
-                </ion-item>
-                
-              
+                <ion-input type="hidden" formControlName="accion"   value="1"></ion-input>
+
                 
             </ion-list>
                
@@ -63,6 +54,12 @@
                 <button block class="btn-ingresar" >Guardar datos</button>
             </div>
         </form>
+        <ion-fab right bottom>
+            <button ion-fab color="whatsapp"><ion-icon name="logo-whatsapp"></ion-icon></button>
+            <ion-fab-list side="left">
+              <a class="button-reserva"  href="https://api.whatsapp.com/send?phone=569" target="_blank"  ion-fab> Ir a whatsapp</a>
+            </ion-fab-list>
+          </ion-fab>
     </ion-content>
 
 

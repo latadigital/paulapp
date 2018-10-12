@@ -40,6 +40,7 @@ export class ConsultaPage {
           altura: ['', Validators.required],
           edad: ['', Validators.required],
           descripcion: ['', Validators.required],
+          accion: ['', Validators.required],          
       });
       
   }
@@ -59,7 +60,7 @@ export class ConsultaPage {
 
 
   save(){
-    this.proveedor.saveDataUser(this.user, 9).then((data) => {
+    this.proveedor.saveDataUser(this.user, 9, 2).then((data) => {
       this.data = data;
         const toast = this.toastCtrl.create({
             message: 'Datos guardados con éxito',

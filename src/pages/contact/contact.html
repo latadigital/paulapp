@@ -1,17 +1,66 @@
+<!--
+  Generated template for the ConsultaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
 <ion-header>
+
   <ion-navbar color="primary">
-    <ion-title>
-      Contact
-    </ion-title>
-  </ion-navbar>
+
+      <ion-title text-center>Contacto en linea </ion-title>
+
+    </ion-navbar>
+
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
-</ion-content>
+<ion-content padding>
+        <form autocomplete="off" [formGroup]="user" (ngSubmit)="save()">
+              
+            <ion-list>
+                <ion-item>
+                    <ion-label color="primary"><span class="obligatorio">*</span>Enfermedad</ion-label>
+                    <ion-select   placeholder="Seleccione" formControlName="diagnostico" value="" >
+                        <ion-option value="enfermedad1" selected>enfermedad1</ion-option>
+                        <ion-option value="enfermedad1">enfermedad2</ion-option>
+                    </ion-select>
+                </ion-item>
+                <ion-item>
+                  <ion-label floating>Cuentenos su diagnostico</ion-label>
+                  <ion-textarea  rows="15" maxLength="500" formControlName="descripcion" [value]="user_data?.descripcion"  value=""></ion-textarea>
+              </ion-item>            
+                <ion-item>
+                    <ion-label floating>Peso</ion-label>
+                    <ion-input type="text"  formControlName="peso" [value]="user_data?.peso"  value=""></ion-input>
+                </ion-item>
+                
+                <ion-item>
+                    <ion-label floating>Altura </ion-label>
+                    <ion-input type="text" formControlName="altura" [value]="user_data?.altura" ></ion-input>
+                </ion-item> 
+    
+                <ion-item>
+                    <ion-label floating>Edad</ion-label>
+                    <ion-input type="number" maxlength="2" formControlName="edad"  [value]="user_data?.edad"  value=""></ion-input>
+                </ion-item>
+             
+
+                
+                
+            </ion-list>
+               
+            <div padding>
+                <button block class="btn-ingresar" >Guardar datos</button>
+            </div>
+        </form>
+        <ion-fab right bottom>
+          <button ion-fab color="whatsapp"><ion-icon name="logo-whatsapp"></ion-icon></button>
+          <ion-fab-list side="left">
+            <a class="button-reserva"  href="https://api.whatsapp.com/send?phone=569" target="_blank"  ion-fab> Ir a whatsapp</a>
+          </ion-fab-list>
+        </ion-fab>
+    </ion-content>
+
+
+
